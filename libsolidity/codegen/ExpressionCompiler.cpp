@@ -1817,6 +1817,7 @@ void ExpressionCompiler::appendExternalFunctionCall(
 				newMem := add(mem, and(add(returndatasize(), 31), not(31)))
 			})", {"mem", "newMem"});
 			utils().storeFreeMemoryPointer();
+			m_context << Instruction::RETURNDATASIZE;
 			utils().abiDecode(_functionType.returnParameterTypes(), true);
 		}
 		else
