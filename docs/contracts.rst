@@ -724,10 +724,11 @@ All non-indexed arguments will be stored in the data part of the log.
         );
 
         function deposit(bytes32 _id) public payable {
-            // Any call to this function (even deeply nested) can
-            // be detected from the JavaScript API by filtering
-            // for `Deposit` to be called.
-            Deposit(msg.sender, _id, msg.value);
+            // Events are emitted using `emit` followed by
+            // a call of the event. Any such call
+            // (even deeply nested) can be detected from
+            // the JavaScript API by filtering for `Deposit`.
+            emit Deposit(msg.sender, _id, msg.value);
         }
     }
 
